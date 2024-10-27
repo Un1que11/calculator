@@ -35,12 +35,31 @@ fn main() {
     println!("{operation}");
 
     match operation {
-        '+' => result = first_number + second_number,
-        '-' => result = first_number - second_number,
-        '*' => result = first_number * second_number,
-        '/' => result = first_number / second_number,
+        '+' => result = add(first_number, second_number),
+        '-' => result = subtract(first_number, second_number),
+        '*' => result = multiple(first_number, second_number),
+        '/' => result = divide(first_number, second_number),
         _ => panic!("Please type a valid operation")
     }
 
     println!("Result: {}", result);
+}
+
+fn add(first_number: i128, second_number: i128) -> i128 {
+    first_number + second_number
+}
+
+fn subtract(first_number: i128, second_number: i128) -> i128 {
+    first_number - second_number
+}
+
+fn multiple(first_number: i128, second_number: i128) -> i128 {
+    first_number * second_number
+}
+
+fn divide(first_number: i128, second_number: i128) -> i128 {
+    match second_number {
+        0 => panic!("Don't divide by zero"),
+        _ => first_number / second_number,
+    }
 }
